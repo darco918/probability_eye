@@ -2,6 +2,7 @@ package com.example.probabilityeye
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -17,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val typeface = Typeface.createFromAsset(assets, "Kastelov_Axiforma_Regular.otf")
+        instructions.typeface = typeface
 
         val inputNumber = findViewById<EditText>(R.id.input_number)
         inputNumber.setText("0.1")

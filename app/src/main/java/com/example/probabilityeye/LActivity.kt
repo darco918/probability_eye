@@ -1,10 +1,12 @@
 package com.example.probabilityeye
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.ln
 
 class LActivity : AppCompatActivity() {
@@ -12,6 +14,7 @@ class LActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_l)
+
         val randomNumber = Math.random().toFloat()
 
         val output = findViewById<TextView>(R.id.output_text)
