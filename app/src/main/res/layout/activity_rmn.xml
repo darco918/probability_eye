@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDDDDD"
-    tools:context=".MainActivity">
+    tools:context=".RmnActivity">
 
     <EditText
         android:id="@+id/input_number"
@@ -23,24 +23,65 @@
         app:layout_constraintRight_toRightOf="parent"
         android:background="@drawable/vect"
         android:elevation="1dp"
+        android:layout_marginStart="40dp"
         />
 
+    <EditText
+        android:id="@+id/input_number_n"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:shadowColor="#F47C20"
+        android:textColorHint="#F47C20"
+        android:textColor="#F47C20"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/input_number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/vect"
+        android:elevation="1dp"
+        android:layout_marginStart="40dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="@id/input_number"
+        app:layout_constraintTop_toTopOf="@id/input_number"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="m"
+        android:textSize="30sp"
+        android:textColor="#5b5b5b"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="@id/input_number_n"
+        app:layout_constraintTop_toTopOf="@id/input_number_n"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="n"
+        android:textSize="30sp"
+        android:textColor="#5b5b5b"
+        />
     <TextView
         android:id="@+id/output_text"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@+id/input_number"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/black_button"
+        android:gravity="center"
+        android:text="Dan"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="50dp"
-        android:text="Dan"
-        android:textSize="25sp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/black_button"
-        android:textColor="#ffffff"
-        android:gravity="center"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/input_number" />
 
     <TextView
         android:layout_width="0dp"
@@ -49,14 +90,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="20sp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:elevation="1dp"
         android:gravity="center"
         android:textColor="#fafafa"
         android:background="@drawable/instruction_text_style"
-        android:text="Introduceti in casută un număr p care apartine intervalului [0,1)"
+        android:text="Introduceti doua numere, cu proprietatea ca primul mai mic ca al doilea."
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,7 +123,7 @@
             android:background="@drawable/option_button"
             android:text="B(p)"
             android:textAllCaps="false"
-            android:textColor="#F47C20"
+            android:textColor="#5b5b5b"
             />
 
         <Button
@@ -115,7 +156,7 @@
             android:background="@drawable/option_button"
             android:textAllCaps="false"
             android:text="R(m,n)"
-            android:textColor="#5b5b5b"
+            android:textColor="#F47C20"
 
             />
 

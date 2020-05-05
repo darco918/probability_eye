@@ -5,18 +5,18 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.widget.EditText
 import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.ln
 
-
-class MainActivity : AppCompatActivity() {
+class EtetaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_eteta)
 
         val inputNumber = findViewById<EditText>(R.id.input_number)
         inputNumber.setText("0.1")
@@ -33,20 +33,18 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
                     val number = inputNumber.getText().toString().toDouble()
-                    if (number < 1) {
-                        if (number > 0)
-                            computeFunction(inputNumber.getText().toString().toDouble())
-                        else
-                            output.text = "Introduceti un numar mai mare ca 0 "
-                        output_text.setTextColor(Color.rgb(255, 0, 0))
+                        if (number > 0){
+                            output_text.setTextColor(Color.rgb(255, 255, 255))
+                            computeFunction(inputNumber.getText().toString().toDouble())}
 
-                    } else {
-                        output.text = "Introduceti un numar mai mic ca 1 "
-                        output_text.setTextColor(Color.rgb(255, 0, 0))
+                        else {
+                            output.text = "Introduceti un numar mai mare ca 0 "
+                            output_text.setTextColor(Color.rgb(255, 0, 0))
+                        }
                     }
                 }
 
-            }
+
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -56,6 +54,12 @@ class MainActivity : AppCompatActivity() {
         })
 
         // intents to the other activities
+
+        val main_button = findViewById<Button>(R.id.bp)
+        main_button.setOnClickListener {
+            val intent = Intent(this,  MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val dun_button = findViewById<Button>(R.id.dun)
         dun_button.setOnClickListener() {
@@ -74,14 +78,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RmnActivity::class.java)
             startActivity(intent)
         }
-
-
-        val eteta_button = findViewById<Button>(R.id.eteta)
-        eteta_button.setOnClickListener {
-            val intent = Intent(this, EtetaActivity::class.java)
-            startActivity(intent)
-        }
-
         val l_button = findViewById<Button>(R.id.l)
         l_button.setOnClickListener {
             val intent = Intent(this, LActivity::class.java)
@@ -91,14 +87,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun computeFunction(number: Double) {
-        val randomNumber = Math.random().toFloat()
+        val randomNumber = Math.random()
 
         val output = findViewById<TextView>(R.id.output_text)
 
-        if (number < randomNumber)
-            output.text = "0"
-        else {
-            output.text = "1"
-        }
+        val new = -number*ln(1 - randomNumber)
+        output.text = new.toString()
     }
 }

@@ -5,61 +5,55 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.widget.EditText
 import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-class MainActivity : AppCompatActivity() {
+class DunActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_dun)
         val inputNumber = findViewById<EditText>(R.id.input_number)
-        inputNumber.setText("0.1")
+        inputNumber.setText("1")
 
         val output = findViewById<TextView>(R.id.output_text)
-        computeFunction(inputNumber.getText().toString().toDouble())
+        computeFunction(inputNumber.getText().toString().toInt())
+
 
         inputNumber.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val output = findViewById<TextView>(R.id.output_text)
-                if (inputNumber.getText().toString() == "") {
-                    output.text = "Introduceti un numar "
+                if(inputNumber.getText().toString() == ""){
+                    output.text = "Introduceti un numar natural "
                     output_text.setTextColor(Color.rgb(255, 0, 0))
 
-                } else {
-                    val number = inputNumber.getText().toString().toDouble()
-                    if (number < 1) {
-                        if (number > 0)
-                            computeFunction(inputNumber.getText().toString().toDouble())
-                        else
-                            output.text = "Introduceti un numar mai mare ca 0 "
-                        output_text.setTextColor(Color.rgb(255, 0, 0))
+                }
+                else {
+                    val number = inputNumber.getText().toString().toInt()
 
-                    } else {
-                        output.text = "Introduceti un numar mai mic ca 1 "
-                        output_text.setTextColor(Color.rgb(255, 0, 0))
-                    }
+                    if (number > 0)
+                        computeFunction(inputNumber.getText().toString().toInt())
+                    else
+                        output.text = "Introduceti un numar mai mare ca 0 "
+                    output_text.setTextColor(Color.rgb(255, 0, 0))
+
                 }
 
-            }
+                }
+
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
 
-        // intents to the other activities
-
-        val dun_button = findViewById<Button>(R.id.dun)
-        dun_button.setOnClickListener() {
-            val intent = Intent(this, DunActivity::class.java)
+        val main_button = findViewById<Button>(R.id.bp)
+        main_button.setOnClickListener {
+            val intent = Intent(this,  MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -88,17 +82,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
     }
 
-    private fun computeFunction(number: Double) {
+    private fun computeFunction(number: Int) {
         val randomNumber = Math.random().toFloat()
 
         val output = findViewById<TextView>(R.id.output_text)
+        val aux = number * randomNumber
+        val new = aux.toInt()
+            output.text = new.toString()
 
-        if (number < randomNumber)
-            output.text = "0"
-        else {
-            output.text = "1"
-        }
     }
 }

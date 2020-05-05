@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDDDDD"
-    tools:context=".MainActivity">
+    tools:context=".EtetaActivity">
 
     <EditText
         android:id="@+id/input_number"
@@ -56,7 +56,7 @@
         android:gravity="center"
         android:textColor="#fafafa"
         android:background="@drawable/instruction_text_style"
-        android:text="Introduceti in casută un număr p care apartine intervalului [0,1)"
+        android:text="Introduceti in casută un unghi ϴ mai mare ca 0 "
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,7 +82,7 @@
             android:background="@drawable/option_button"
             android:text="B(p)"
             android:textAllCaps="false"
-            android:textColor="#F47C20"
+            android:textColor="#5b5b5b"
             />
 
         <Button
@@ -127,7 +127,7 @@
             android:background="@drawable/option_button"
             android:textAllCaps="false"
             android:text="E(ϴ)"
-            android:textColor="#5b5b5b"
+            android:textColor="#F47C20"
 
             />
         <Button

@@ -5,19 +5,18 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.widget.EditText
 import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.ln
 
-
-class MainActivity : AppCompatActivity() {
+class GpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_gp)
         val inputNumber = findViewById<EditText>(R.id.input_number)
         inputNumber.setText("0.1")
 
@@ -57,18 +56,17 @@ class MainActivity : AppCompatActivity() {
 
         // intents to the other activities
 
+        val main_button = findViewById<Button>(R.id.bp)
+        main_button.setOnClickListener {
+            val intent = Intent(this,  MainActivity::class.java)
+            startActivity(intent)
+        }
+
         val dun_button = findViewById<Button>(R.id.dun)
         dun_button.setOnClickListener() {
             val intent = Intent(this, DunActivity::class.java)
             startActivity(intent)
         }
-
-        val gp_button = findViewById<Button>(R.id.gp)
-        gp_button.setOnClickListener {
-            val intent = Intent(this, GpActivity::class.java)
-            startActivity(intent)
-        }
-
         val rmn_button = findViewById<Button>(R.id.rmn)
         rmn_button.setOnClickListener {
             val intent = Intent(this, RmnActivity::class.java)
@@ -87,18 +85,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LActivity::class.java)
             startActivity(intent)
         }
-
     }
-
     private fun computeFunction(number: Double) {
-        val randomNumber = Math.random().toFloat()
+        val randomNumber = Math.random()
 
         val output = findViewById<TextView>(R.id.output_text)
+        val log = ln(1- randomNumber)/ (ln(1-number)+1)
+        val new = log.toInt() +1
+        output.text = new.toString()
 
-        if (number < randomNumber)
-            output.text = "0"
-        else {
-            output.text = "1"
-        }
     }
 }
